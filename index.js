@@ -1,0 +1,23 @@
+const express = require("express"); 
+const app = express(); 
+const mongoose = require("mongoose"); 
+const postRoute = require("./routes/post"); 
+const getPostsRoute = require("./routes/getPosts")
+const morgan = require('morgan');
+const helmet = require('helmet');
+const cors= require('cors')
+const dotenv = require("dotenv"); 
+
+dotenv.config(); 
+mongoose.set('strictQuery', true);
+
+mongoose.connect( 
+    process.env.MONGO_URL)
+app.use(cors()); 
+app.use(express.json());
+app.use("/api/post" , postRoute);
+app.use("/api/getPosts", getPostsRoute); 
+
+app.listen(8800, () => { 
+    console.log ("Backend server is running at port 8000"); 
+})
