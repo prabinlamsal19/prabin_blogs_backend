@@ -3,9 +3,10 @@ const router = require('express').Router();
 
 router.post("/", async (req, res) => { 
     try {
-        const { postId, title, readTime, content } = req.body; // Assuming the request body contains these fields
+        const {title, readTime, content } = req.body; // Assuming the request body contains these fields
         
         // Create a new Post instance using the Post model
+        const postId = await Post.countDocuments(); 
         const newPost = new Post({
             postId,
             title,
