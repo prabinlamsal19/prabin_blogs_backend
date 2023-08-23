@@ -2,7 +2,9 @@ const express = require("express");
 const app = express(); 
 const mongoose = require("mongoose"); 
 const postRoute = require("./routes/post"); 
-const getPostsRoute = require("./routes/getPosts")
+const commentRoute = require("./routes/comment");
+const getPostsRoute = require("./routes/getPosts"); 
+const getCommentsRoute = require("./routes/getComments"); 
 const morgan = require('morgan');
 const helmet = require('helmet');
 const cors= require('cors')
@@ -15,8 +17,11 @@ mongoose.connect(
     process.env.MONGO_URL)
 app.use(cors()); 
 app.use(express.json());
-app.use("/api/post" , postRoute);
-app.use("/api/getPosts", getPostsRoute); 
+app.use("/api/post", postRoute);
+app.use("/api/getPosts", getPostsRoute);
+
+app.use("/api/comment", commentRoute); 
+app.use("/api/getComments", getCommentsRoute);
 
 app.listen(8800, () => { 
     console.log ("Backend server is running at port 8000"); 

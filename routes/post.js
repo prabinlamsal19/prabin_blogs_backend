@@ -2,8 +2,9 @@ const Post = require("../models/Post");
 const router = require('express').Router();
 
 router.post("/", async (req, res) => { 
+    console.log("The request has been received"); 
     try {
-        const {title, readTime, content } = req.body; // Assuming the request body contains these fields
+        const {title, readTime, content, highlight } = req.body; // Assuming the request body contains these fields
         
         // Create a new Post instance using the Post model
         const postId = await Post.countDocuments(); 
@@ -11,7 +12,8 @@ router.post("/", async (req, res) => {
             postId,
             title,
             readTime,
-            content
+            content, 
+            highlight
         });
         
         // Save the new post to the database

@@ -15,7 +15,10 @@ const PostSchema = new mongoose.Schema(
     }, 
     content: { 
         type: String, 
-    },
+    }, 
+    highlight: { 
+        type: String, 
+    }
    } ,
    {timestamps: true}
 ); 
