@@ -1,9 +1,7 @@
 const mongoose = require("mongoose");
 
 const ReplySchema = new mongoose.Schema(
-   {userId: { 
-        type: String, 
-   }, 
+   {
     comId: {
         type: String,
         required: true,
@@ -27,13 +25,16 @@ const ReplySchema = new mongoose.Schema(
 
 const CommentSchema = new mongoose.Schema(
    {
+    userId: { 
+        type: String, 
+   }, 
+   postId: { 
+         type: Number
+   } , 
     comId: {
         type: String,
         required: true,
-    }, 
-     postId: { 
-        type: String, 
-  } , 
+    },
     fullName: {
         type: String,
         required: true,
