@@ -9,7 +9,7 @@ const morgan = require('morgan');
 const helmet = require('helmet');
 const cors= require('cors')
 const dotenv = require("dotenv"); 
-import serverless from 'serverless-http'; 
+const serverless = require('serverless-http'); 
 
 
 exports.handler = async function (event , context) { 
