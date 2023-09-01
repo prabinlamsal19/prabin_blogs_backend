@@ -11,33 +11,26 @@ const cors= require('cors')
 const dotenv = require("dotenv"); 
 import serverless from 'serverless-http'; 
 
-//netlify function
 
-// exports.handler = async function (event , context) { 
-//     return { 
-//         statusCode: 200, 
-//         body: JSON.stringify({message: "Hello World"}) , 
-//     };
-// };
+exports.handler = async function (event , context) { 
+    dotenv.config(); 
+    mongoose.set('strictQuery', true);
+    
+    mongoose.connect( 
+        process.env.MONGO_URL)
+    app.use(cors()); 
+    app.use(express.json());
+    app.use("/api/post", postRoute);
+    app.use("/api/getPosts", getPostsRoute);
+    
+    app.use("/api/comment", commentRoute); 
+    app.use("/api/getComments", getCommentsRoute);
+    
+    
+    
+    app.listen(8800, () => { 
+        console.log ("Backend server is running at port 8000"); 
+    })
+     serverless(app)(event,context); 
 
-
-dotenv.config(); 
-mongoose.set('strictQuery', true);
-
-mongoose.connect( 
-    process.env.MONGO_URL)
-app.use(cors()); 
-app.use(express.json());
-app.use("/api/post", postRoute);
-app.use("/api/getPosts", getPostsRoute);
-
-app.use("/api/comment", commentRoute); 
-app.use("/api/getComments", getCommentsRoute);
-
-
-
-app.listen(8800, () => { 
-    console.log ("Backend server is running at port 8000"); 
-})
-
-export const handler = serverless(app); 
+};
