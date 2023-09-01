@@ -12,7 +12,7 @@ const dotenv = require("dotenv");
 const serverless = require('serverless-http'); 
 
 
-exports.handler = async function (event , context) { 
+exports.handler = function (event , context) { 
     dotenv.config(); 
     mongoose.set('strictQuery', true);
     
