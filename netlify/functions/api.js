@@ -24,7 +24,12 @@ exports.handler = async function (event , context) {
     app.use("/api/getPosts", getPostsRoute);
     
     app.use("/api/comment", commentRoute); 
-    app.use("/api/getComments", getCommentsRoute);
+    app.use("/api/getComments", getCommentsRoute); 
+    app.use("/api/test", (req, res)=> { 
+        res.json( { 
+            "api is working fine": "yeahh",
+        })
+    })
     
     
     
