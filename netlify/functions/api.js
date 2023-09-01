@@ -31,11 +31,9 @@ exports.handler = async function (event , context) {
         })
     })
     
-    
-    
-    app.listen(8800, () => { 
-        console.log ("Backend server is running at port 8000"); 
-    })
+    // app.listen(8800, () => { 
+    //     console.log ("Backend server is running at port 8000"); 
+    // })
      serverless(app)(event,context); 
 
 };
