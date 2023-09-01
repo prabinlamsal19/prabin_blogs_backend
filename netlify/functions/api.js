@@ -21,12 +21,7 @@ exports.handler = function async(event , context) {
     app.use(cors()); 
     app.use(express.json());
     app.use("/api/post", postRoute);
-    app.use("/api/getPosts", (req,res) => { 
-        return res.json 
-    ( { 
-        "working" : "fine", 
-    })
-    });
+    app.use("/api/getPosts", getPostsRoute);
     
     app.use("/api/comment", commentRoute); 
     app.use("/api/getComments", getCommentsRoute); 
