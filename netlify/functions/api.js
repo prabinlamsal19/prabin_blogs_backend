@@ -10,6 +10,7 @@ const helmet = require('helmet');
 const cors= require('cors')
 const dotenv = require("dotenv"); 
 const serverless = require('serverless-http'); 
+const getTestsRoute = require("../../routes/getTest"); 
 
 
 exports.handler = function async(event , context) { 
@@ -25,11 +26,7 @@ exports.handler = function async(event , context) {
     
     app.use("/api/comment", commentRoute); 
     app.use("/api/getComments", getCommentsRoute); 
-    app.use("/api/test", (req, res)=> { 
-        res.json( { 
-            "api is working fine": "yeahh",
-        })
-    })
+    app.use("/api/test", getTestsRoute);
     
     // app.listen(8800, () => { 
     //     console.log ("Backend server is running at port 8000"); 
