@@ -14,12 +14,14 @@ const getTestsRoute = require("../../routes/getTest");
 
 
 exports.handler = function async(event , context) { 
+    app.use(cors()); 
+    app.options('*', cors());
     dotenv.config(); 
     mongoose.set('strictQuery', true);
-    
     mongoose.connect( 
         process.env.MONGO_URL)
-    app.use(cors()); 
+ 
+
     app.use(express.json());
     app.use("/api/post", postRoute);
     app.use("/api/getPosts", getPostsRoute);

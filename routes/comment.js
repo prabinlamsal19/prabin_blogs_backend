@@ -28,7 +28,7 @@ router.post("/:postId", async (req, res) => {
             await newComment.save();
         }
 
-        return res.status(201).json({ success: true, message: "Comments created successfully" });
+        return res.status(201).json({ success: true, message: "Comments created successfully", });
     } catch (error) {
         console.error(error);
         return res.status(500).json({ success: false, message: "An error occurred while creating the comments" });
